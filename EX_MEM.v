@@ -92,16 +92,12 @@ module EX_MEM(
             bypass_data_out <= 32'b0;
         end
         else if (flush) begin // 添加 flush 分支
-            // 关键：将控制信号清零，使当前指令失效（变为 nop）
             wb_out <= 7'b0;
             mem_out <= 6'b0;
             cp0_write_out <= 1'b0;
-            
-            // 其他数据信号也建议清零，防止调试时产生干扰
             wa_out <= 5'b0;
             aluout_out <= 32'b0;
             da2_out <= 32'b0;
-            // pc_add8_out <= 32'b0;
             rt_out <= 5'b0;
             alu_hi_out <= 32'b0;
             alu_lo_out <= 32'b0;

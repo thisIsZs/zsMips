@@ -2,21 +2,17 @@
 module cp0_reg(
 	input wire clk,
 	input wire rst,
-
 	input wire en, // 是否出现异常(同样是需要写寄存器的)
 	input wire enw, // 是否要写寄存器
-
 	input wire indelayslot, // 指令是否在延迟槽内
 	input wire[31:0] pc, // 指令的pc
 	input wire[31:0] badvaddr, // 错误的地址
-
 	input wire[4:0] exctype, // 异常类型
 	input wire[4:0] raddr, // 读哪个CPO寄存器
 	input wire[4:0] waddr, // 要写哪个寄存器
-
 	input wire[31:0] writedata, // 要写的数据
-	output reg[31:0] readdata, // 读出的寄存器的数据
 
+	output reg[31:0] readdata, // 读出的寄存器的数据
 	output wire[31:0] epc,
 	output wire[31:0] status,
 	output wire[31:0] cause
