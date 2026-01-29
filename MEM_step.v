@@ -72,8 +72,7 @@ module MEM_step(
                 .readdata(cp0_readdata), .epc(cp0_epc), .status(cp0_status), .cause(cp0_cause));
 
     //异常不写回
-    assign wb_out = wb_in;
-    assign wb_out[0] = wb_in[0] && !excp_is_exc ; 
+    assign wb_out= {wb_in[6:1], wb_in[0] && !excp_is_exc}; 
 
 
     //访存处理
